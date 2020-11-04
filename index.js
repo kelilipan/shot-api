@@ -41,19 +41,23 @@ app.get("/shot", async (req, res) => {
   if (!url) {
     res.status(400).send("url query not defined, BAD REQUEST!");
   }
-  const result = await getScreenshot(url, {
-    width: parseInt(width),
-    height: parseInt(height),
-    fullPage,
-    deviceScaleFactor: parseFloat(scale),
-  });
-  if (encode) {
-    res.json({
-      image: `data:image/jpeg;base64,${Buffer(result).toString("base64")}`,
+  try {
+    const result = await getScreenshot(url, {
+      width: parseInt(width),
+      height: parseInt(height),
+      fullPage,
+      deviceScaleFactor: parseFloat(scale),
     });
-  } else {
-    res.set("Content-Type", "image/png");
-    res.send(result);
+    if (encode) {
+      res.json({
+        image: `data:image/jpeg;base64,${Buffer(result).toString("base64")}`,
+      });
+    } else {
+      res.set("Content-Type", "image/png");
+      res.send(result);
+    }
+  } catch (e) {
+    res.status(500).send(e.message);
   }
 });
 
