@@ -12,7 +12,7 @@ const getScreenshot = async (url, config) => {
   };
   try {
     const browser = await puppeteer.launch({
-      args: ["--no-sandbox"],
+      args: ["--no-sandbox "],
       defaultViewport: {
         width: options.width,
         height: options.height,
