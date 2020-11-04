@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 
 const getScreenshot = async (url, config) => {
   let options = {
-    fullPage: true,
+    fullPage: false,
     width: 800,
     height: 600,
     ...config,
@@ -35,13 +35,14 @@ app.get("/", (req, res) => {
 });
 
 app.get("/shot", async (req, res) => {
-  const { url, encode, width, height } = req.query;
+  const { url, encode, width, height, fullPage } = req.query;
   if (!url) {
     res.status(400).send("url query not defined, BAD REQUEST!");
   }
   const result = await getScreenshot(url, {
     width: parseInt(width),
     height: parseInt(height),
+    fullPage,
   });
   if (encode) {
     res.json({

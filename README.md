@@ -11,6 +11,7 @@ http://localhost:3000/shot?url=<b>https://wisesa.dev</b>&width=<b>600</b>&height
 parameters
 
 - **url**: your url (required)
+- **fullPage**: full page or not (default:false)
 - **width**: image width
 - **height**: image height
 - **encode**: return image in base64 (default:false)
