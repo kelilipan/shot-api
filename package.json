@@ -1,0 +1,11 @@
+{
+  "name": "screnshot-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "raisoturu",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "puppeteer": "^5.4.1"
+  }
+}
