@@ -45,7 +45,7 @@ app.get("/shot", async (req, res) => {
     width: parseInt(width),
     height: parseInt(height),
     fullPage,
-    deviceScaleFactor: scale,
+    deviceScaleFactor: parseFloat(scale),
   });
   if (encode) {
     res.json({
