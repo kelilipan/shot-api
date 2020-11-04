@@ -17,7 +17,7 @@ const getScreenshot = async (url, config) => {
       defaultViewport: {
         width: options.width,
         height: options.height,
-        deviceScaleFactor,
+        deviceScaleFactor: options.deviceScaleFactor,
       },
     });
     const page = await browser.newPage();
