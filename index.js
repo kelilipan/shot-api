@@ -1,7 +1,7 @@
 const express = require("express");
 const puppeteer = require("puppeteer");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const getScreenshot = async (url, config) => {
   let options = {
