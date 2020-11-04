@@ -12,6 +12,7 @@ parameters
 
 - **url**: your url (required)
 - **fullPage**: full page or not (default:false)
+- **scale**: scale device (0.1 to 2 default:1)
 - **width**: image width
 - **height**: image height
 - **encode**: return image in base64 (default:false)

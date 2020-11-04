@@ -8,6 +8,7 @@ const getScreenshot = async (url, config) => {
     fullPage: false,
     width: 800,
     height: 600,
+    deviceScaleFactor: 1,
     ...config,
   };
   try {
@@ -16,6 +17,7 @@ const getScreenshot = async (url, config) => {
       defaultViewport: {
         width: options.width,
         height: options.height,
+        deviceScaleFactor,
       },
     });
     const page = await browser.newPage();
@@ -35,7 +37,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/shot", async (req, res) => {
-  const { url, encode, width, height, fullPage } = req.query;
+  const { url, encode, width, height, fullPage, scale } = req.query;
   if (!url) {
     res.status(400).send("url query not defined, BAD REQUEST!");
   }
@@ -43,6 +45,7 @@ app.get("/shot", async (req, res) => {
     width: parseInt(width),
     height: parseInt(height),
     fullPage,
+    deviceScaleFactor: scale,
   });
   if (encode) {
     res.json({
